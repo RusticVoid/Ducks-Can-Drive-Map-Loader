@@ -21,10 +21,10 @@ Say for instance you choose the "Walls" map. You will put the unzip the "Walls" 
 
 The directory will look like this:
 <pre>
-  Ducks Can Drive/<br>
-  ├── Maps/<br>
-  │   └── Walls/<br>
-  │       ├── icon.png<br>
-  │       ├── info.json<br>
-  │       └── walls<br>
+  Ducks Can Drive/
+  ├── Maps/
+  │   └── Walls/
+  │       ├── icon.png
+  │       ├── info.json
+  │       └── walls
 </pre>
