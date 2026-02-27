@@ -29,7 +29,6 @@ namespace DCDMapLoader
 
                 if (GUI.Button(buttonRect, ""))
                 {
-                    MelonLogger.Msg($"Loading track {i}: {track.name}");
                     customTrackLoader.LoadRace(i);
                 }
 

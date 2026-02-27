@@ -45,7 +45,7 @@ namespace DCDMapLoader
         public static void LoadRace(int MapID) {
             if (PhotonNetwork.InRoom) {
                 customMapLoadeding = true;
-                MelonLogger.Msg("Loading " +System.IO.Path.GetFileNameWithoutExtension(customTracks[MapID].mapPath) + "!");
+                MelonLogger.Msg("Loading " + customTracks[MapID].name + "!");
                 PhotonNetwork.LoadLevel(System.IO.Path.GetFileNameWithoutExtension(customTracks[MapID].mapPath));
             }
         }
@@ -132,7 +132,11 @@ namespace DCDMapLoader
                 }
             }
 
-            MelonLogger.Msg("Found Custom Maps: " + string.Join(", ", customTracks.Select(track => track.name)));     
+            if (customTracks.Count <= 0) {
+                MelonLogger.Msg("No Custom Maps Found!");
+            } else {
+                MelonLogger.Msg("Found Custom Maps: " + string.Join(", ", customTracks.Select(track => track.name)));
+            }
         }
 
         public static void initCustomMapObjects(int buildIndex)

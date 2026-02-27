@@ -21,14 +21,11 @@ namespace DCDMapLoader
         {
             MelonLogger.Msg("Expanded loaded!");
 
-
-
-            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Maps/"))
-            {
-            }
-            else
+            string mapsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Maps");
+            if (!Directory.Exists(mapsPath))
             {
                 MelonLogger.Msg("No maps folder found! Creating one now.");
+                Directory.CreateDirectory(mapsPath);
             }
 
             customTrackLoader.InitCustomMaps();
