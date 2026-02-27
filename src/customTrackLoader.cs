@@ -185,20 +185,22 @@ namespace DCDMapLoader
 
                     Transform[] spawnPositions = positions.ToArray();
 
-                    MelonLogger.Msg("Initializing Player!");
-                    int index = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+                    MelonLogger.Msg("Initializing Players!");
+                    int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
                     //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
 
-                    if (buildIndex > 3)
-                    {
-                        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
-                        return;
-                    }
-                    GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
-                    Garage[] array = UnityEngine.Object.FindObjectsOfType<Garage>();
-                    for (int num = 0; num < array.Length; num++)
-                    {
-                        array[num].localPlayer = gameObject.GetComponent<Car>();
+                    for (int index = 1; index < playerCount; i++) {
+                        if (buildIndex > 3)
+                        {
+                            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
+                            return;
+                        }
+                        GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
+                        Garage[] array = UnityEngine.Object.FindObjectsOfType<Garage>();
+                        for (int num = 0; num < array.Length; num++)
+                        {
+                            array[num].localPlayer = gameObject.GetComponent<Car>();
+                        }
                     }
                 }
             }
