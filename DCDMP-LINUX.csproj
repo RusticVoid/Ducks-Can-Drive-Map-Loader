@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>DCDMapLoader</AssemblyName>
+    <RootNamespace>DCDMapLoader</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Asuming you are using the Steam Proton version of the game -->
+    <!-- change GameDir to game path where exe is stored -->
+    <GameDir>$(HOME)/.local/share/Steam/steamapps/common/Ducks Can Drive</GameDir> 
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="MelonLoader">
+      <HintPath>$(GameDir)/MelonLoader/net35/MelonLoader.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+
+    <Reference Include="0Harmony">
+      <HintPath>$(GameDir)/MelonLoader/net35/0Harmony.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="PhotonUnityNetworking">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/PhotonUnityNetworking.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/Assembly-CSharp.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/UnityEngine.UI.dll</HintPath>
+    </Reference>
+
+    <Reference Include="PhotonRealtime">
+      <HintPath>$(GameDir)/Ducks Can Drive_Data/Managed/PhotonRealtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
