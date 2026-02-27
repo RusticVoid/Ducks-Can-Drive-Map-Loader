@@ -19,12 +19,12 @@ There are some maps I made that you can download [here](https://github.com/Rusti
 
 Say for instance you choose the "Walls" map. You will put the unzip the "Walls" folder and put it into the "Maps" folder.
 
-The directory will look like this:<br>
-<pre> ```
+The directory will look like this:
+<pre>
   Ducks Can Drive/<br>
   ├── Maps/<br>
   │   └── Walls/<br>
   │       ├── icon.png<br>
   │       ├── info.json<br>
   │       └── walls<br>
-``` </pre>
+</pre>
