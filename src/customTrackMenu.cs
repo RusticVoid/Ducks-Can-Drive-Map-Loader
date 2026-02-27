@@ -14,18 +14,29 @@ namespace DCDMapLoader
 {
     public class customTrackMenu
     {
+        private static Vector2 scrollPosition = Vector2.zero;
+
         public static void menu()
         {
             int ButtonHeight = 75;
             int menuWidth = 365;
+            int menuHeight = 500;
             Vector2 MenuPos = new Vector2(Screen.width - menuWidth - 20f, 20f);
 
-            GUI.Box(new Rect(MenuPos.x, MenuPos.y, menuWidth, 500), "Custom Tracks");
+            GUI.Box(new Rect(MenuPos.x, MenuPos.y, menuWidth, menuHeight), "Custom Tracks");
+
+            int contentHeight = customTrackLoader.customTracks.Count * ButtonHeight + 10;
+
+            scrollPosition = GUI.BeginScrollView(
+                new Rect(MenuPos.x, MenuPos.y + 25, menuWidth, menuHeight - 25),
+                scrollPosition,
+                new Rect(0, 0, menuWidth - 20, contentHeight)
+            );
 
             for (int i = 0; i < customTrackLoader.customTracks.Count; i++) {
                 var track = customTrackLoader.customTracks[i];
 
-                Rect buttonRect = new Rect(MenuPos.x + 10, MenuPos.y + 30 + (ButtonHeight * i), menuWidth - 20, ButtonHeight);
+                Rect buttonRect = new Rect(10, 10 + (ButtonHeight * i), menuWidth - 20, ButtonHeight);
 
                 if (GUI.Button(buttonRect, ""))
                 {
@@ -37,8 +48,9 @@ namespace DCDMapLoader
 
                 Rect textRect = new Rect(buttonRect.x + iconRect.width + 2, buttonRect.y, buttonRect.width - ButtonHeight, ButtonHeight);
                 GUI.Label(textRect, track.name+"\n"+track.desc);
-
             }
+            
+            GUI.EndScrollView();
         }
     }
 
