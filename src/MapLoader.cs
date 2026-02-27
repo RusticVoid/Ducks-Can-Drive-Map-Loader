@@ -21,6 +21,16 @@ namespace DCDMapLoader
         {
             MelonLogger.Msg("Expanded loaded!");
 
+
+
+            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Maps/"))
+            {
+            }
+            else
+            {
+                MelonLogger.Msg("No maps folder found! Creating one now.");
+            }
+
             customTrackLoader.InitCustomMaps();
 
             // Create a Harmony instance for patching game methods
