@@ -15,6 +15,8 @@ using UnityEngine.SceneManagement;
 
 /*
     Version 1.0.2
+    Changes:
+        Changed Default Map to better fit updated spawns
 */
 
 namespace DCDMapLoader
