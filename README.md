@@ -1,4 +1,4 @@
-# Ducks Can Drive Map Loader By RusticVoid
+# Ducks Can Drive Map Loader
 This is a Map Loader for the game Ducks Can Drive.
 
 # How To Install
