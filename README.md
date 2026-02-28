@@ -11,7 +11,7 @@ Take the DCDMapLoader.dll and put it in the "Mods" folder in the Ducks Can Drive
 
 The Map Loader is now installed to Ducks Can Drive.
 
-# How To Play With Custom Maps
+# How To Install Custom Maps
 
 In the Ducks Can Drive game directory there should be a "Maps" folder after running the game once, or you can just make a new folder and call it "Maps".
 
