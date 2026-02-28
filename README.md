@@ -5,7 +5,7 @@ This is a Map Loader for the game Ducks Can Drive.
 First you will need to install [MelonLoader](https://melonwiki.xyz/#/?id=requirements) to Ducks Can Drive, It's very easy to install if you have trouble installing MelonLoader DO NOT ASK ME FOR HELP.
 Here is an install video for MelonLoader. [YouTube Video Link.](https://youtu.be/AMMvtprzh4I?si=qiHABkxAePVoAB9I)
 
-Once you have install MelonLoader, install the latest release of [Ducks Can Drive Map Loader.](https://github.com/RusticVoid/Ducks-Can-Drive-Map-Loader/releases)
+Once you have installed MelonLoader, install the latest release of [Ducks Can Drive Map Loader.](https://github.com/RusticVoid/Ducks-Can-Drive-Map-Loader/releases/latest)
 
 Take the DCDMapLoader.dll and put it in the "Mods" folder in the Ducks Can Drive game directory. If there is no "Mods" folder add a new folder and call it "Mods".
 
