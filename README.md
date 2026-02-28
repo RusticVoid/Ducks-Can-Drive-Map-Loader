@@ -1,7 +1,7 @@
 # Ducks Can Drive Map Loader
 This is a Map Loader for the game Ducks Can Drive.
 ## TODO
-- [ ] Add the abillity to use custom cities
+- [ ] Add the ability to use custom cities
 
 # How To Install
 First you will need to install [MelonLoader](https://melonwiki.xyz/#/?id=requirements) to Ducks Can Drive, It's very easy to install if you have trouble installing MelonLoader DO NOT ASK ME FOR HELP.
