@@ -10,8 +10,18 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 
-[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.0", "RusticVoid")]
+[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.1", "RusticVoid")]
 [assembly: MelonGame("Joseph Cook", "Ducks Can Drive")]
+
+/*
+    Version 1.0.1
+    Bug Fixes:
+        No more extra player in non-custom maps
+
+    Additions:
+        Added options menu
+        Added option for City to load custom tracks
+*/
 
 namespace DCDMapLoader
 {
@@ -40,7 +50,7 @@ namespace DCDMapLoader
         {
             MelonEvents.OnGUI.Unsubscribe(customTrackMenu.menu);
 
-            customTrackLoader.initCustomMapObjects(buildIndex);
+            customTrackLoader.initCustomMapObjects(buildIndex, sceneName);
         }
 
         public override void OnUpdate() {
@@ -48,6 +58,33 @@ namespace DCDMapLoader
             {
                 customTrackLoader.LoadRace(0); // 0 is the MapID (its position in the customTrackLoader.customTracks array)
             }
+        }
+    }
+
+
+    [HarmonyPatch(typeof(RoundTimer), "LoadRace")]
+    public class Patch_LoadRace
+    {
+
+        static bool Prefix(RoundTimer __instance, ref IEnumerator __result)
+        {
+            if (customTrackMenu.CustomMapsOnly == true) {
+                __result = CustomLoadRace(__instance);
+                return false; // Skip original method
+            } else {
+                return true;
+            }
+        }
+
+        static IEnumerator CustomLoadRace(RoundTimer instance)
+        {
+            var loadingRaceField = AccessTools.Field(typeof(RoundTimer), "loadingRace");
+            loadingRaceField.SetValue(instance, true);
+
+            yield return new WaitForSeconds(2.5f);
+
+            int chosenMap = UnityEngine.Random.Range(0, customTrackLoader.customTracks.Count);
+            customTrackLoader.LoadRace(chosenMap);
         }
     }
 }

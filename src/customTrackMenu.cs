@@ -16,6 +16,8 @@ namespace DCDMapLoader
     {
         private static Vector2 scrollPosition = Vector2.zero;
 
+        public static bool CustomMapsOnly = false;
+
         public static void menu()
         {
             int ButtonHeight = 75;
@@ -51,6 +53,11 @@ namespace DCDMapLoader
             }
             
             GUI.EndScrollView();
+
+            Vector2 OptionsMenu = new Vector2(MenuPos.x, menuHeight+20);
+
+            GUI.Box(new Rect(OptionsMenu.x, OptionsMenu.y, menuWidth, 150), "Custom Tracks Options");
+            CustomMapsOnly = GUI.Toggle(new Rect(OptionsMenu.x+10, OptionsMenu.y+20, 200, 30), CustomMapsOnly, "Custom Maps Only");
         }
     }
 

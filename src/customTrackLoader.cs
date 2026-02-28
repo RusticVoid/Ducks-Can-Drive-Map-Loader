@@ -137,65 +137,68 @@ namespace DCDMapLoader
             }
         }
 
-        public static void initCustomMapObjects(int buildIndex)
+        public static void initCustomMapObjects(int buildIndex, string sceneName)
         {
-            if (PhotonNetwork.InRoom) {
-                GameObject[] allObjectsInCustomMap = GameObject.FindObjectsOfType<GameObject>();
+            customTrack customTrack = customTracks.FirstOrDefault(ct => System.IO.Path.GetFileNameWithoutExtension(ct.mapPath) == sceneName);
+            if (customTrack != null) {
+                if (PhotonNetwork.InRoom) {
+                    GameObject[] allObjectsInCustomMap = GameObject.FindObjectsOfType<GameObject>();
 
-                MelonLogger.Msg("Initializing Spawns and Triggers!");
-                List<Transform> positions = new List<Transform>();
+                    MelonLogger.Msg("Initializing Spawns and Triggers!");
+                    List<Transform> positions = new List<Transform>();
 
-                foreach (GameObject obj in allObjectsInCustomMap)
-                {
-                    if (obj.name == "Spawn" || obj.name == "spawn")
+                    foreach (GameObject obj in allObjectsInCustomMap)
                     {
-                        positions.Add(obj.transform);
-                    }
-                    if (obj.name == "ToLastCheckPoint" || obj.name == "toLastCheckPoint")
-                    {
-                        Collider col = obj.GetComponent<Collider>();
-                        if (col != null)
+                        if (obj.name == "Spawn" || obj.name == "spawn")
                         {
-                            TriggerHandler handler = obj.AddComponent<TriggerHandler>();
-                            handler.OnTriggered += ToLastCheckPoint;
+                            positions.Add(obj.transform);
+                        }
+                        if (obj.name == "ToLastCheckPoint" || obj.name == "toLastCheckPoint")
+                        {
+                            Collider col = obj.GetComponent<Collider>();
+                            if (col != null)
+                            {
+                                TriggerHandler handler = obj.AddComponent<TriggerHandler>();
+                                handler.OnTriggered += ToLastCheckPoint;
+                            }
                         }
                     }
-                }
 
-                if (positions.Count == 0)
-                {
-                    MelonLogger.Msg("INVALID MAP NO SPAWNS FOUND!");
-                    MelonLogger.Msg("SPAWN SET TO 0,5,0 THIS MIGHT BREAK THINGS!");
-
-                    GameObject emptyGO = new GameObject();
-                    Transform transform = emptyGO.transform;
-                    transform.position = new Vector3(0f, 5f, 0f);
-                    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-
-                    for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++) 
+                    if (positions.Count == 0)
                     {
-                        positions.Add(transform);
+                        MelonLogger.Msg("INVALID MAP NO SPAWNS FOUND!");
+                        MelonLogger.Msg("SPAWN SET TO 0,5,0 THIS MIGHT BREAK THINGS!");
+
+                        GameObject emptyGO = new GameObject();
+                        Transform transform = emptyGO.transform;
+                        transform.position = new Vector3(0f, 5f, 0f);
+                        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+
+                        for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++) 
+                        {
+                            positions.Add(transform);
+                        }
                     }
-                }
 
-                Transform[] spawnPositions = positions.ToArray();
+                    Transform[] spawnPositions = positions.ToArray();
 
-                MelonLogger.Msg("Initializing Player!");
-                int index = PhotonNetwork.LocalPlayer.ActorNumber - 1;
-                //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
+                    MelonLogger.Msg("Initializing Player!");
+                    int index = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+                    //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
 
-                Vector3 spawnOffsetFix = new Vector3(-13.55f, 0f, 9.5f);
+                    Vector3 spawnOffsetFix = new Vector3(-13.55f, 0f, 9.5f);
 
-                if (buildIndex > 3)
-                {
-                    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position + spawnOffsetFix, spawnPositions[index].rotation, 0);
-                    return;
-                }
-                GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position + spawnOffsetFix, spawnPositions[index].rotation, 0);
-                Garage[] array = UnityEngine.Object.FindObjectsOfType<Garage>();
-                for (int num = 0; num < array.Length; num++)
-                {
-                    array[num].localPlayer = gameObject.GetComponent<Car>();
+                    if (buildIndex > 3)
+                    {
+                        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position + spawnOffsetFix, spawnPositions[index].rotation, 0);
+                        return;
+                    }
+                    GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position + spawnOffsetFix, spawnPositions[index].rotation, 0);
+                    Garage[] array = UnityEngine.Object.FindObjectsOfType<Garage>();
+                    for (int num = 0; num < array.Length; num++)
+                    {
+                        array[num].localPlayer = gameObject.GetComponent<Car>();
+                    }
                 }
             }
         }
