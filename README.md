@@ -17,13 +17,13 @@ In the Ducks Can Drive game directory there should be a "Maps" folder after runn
 
 There are some maps I made that you can download [here](https://github.com/RusticVoid/Ducks-Can-Drive-Map-Loader/tree/main/Maps).
 
-Say for instance you choose the "Floating Road" map. You will unzip the "Floating Road.zip" in the "Maps" folder, then you can delete the zip.
+Say for instance you choose the "Template Road" map. You will unzip the "TemplateRoad.zip" in the "Maps" folder, then you can delete the zip.
 
 The directory will look like this:
 <pre>
   Ducks Can Drive/
   ├── Maps/
-  │   └── Floating Road/
+  │   └── Template Road/
   │       ├── icon.png
   │       ├── info.json
   │       └── walls
