@@ -15,6 +15,8 @@ using UnityEngine.SceneManagement;
 
 /*
     Version 1.0.3
+    Additions:
+    - Added the ability to use both custom and base game maps
 */
 
 namespace DCDMapLoader
