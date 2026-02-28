@@ -17,6 +17,7 @@ namespace DCDMapLoader
         private static Vector2 scrollPosition = Vector2.zero;
 
         public static bool CustomMapsOnly = false;
+        public static bool BaseGameMapsOnly = false;
 
         public static void menu()
         {
@@ -57,7 +58,17 @@ namespace DCDMapLoader
             Vector2 OptionsMenu = new Vector2(MenuPos.x, menuHeight+20);
 
             GUI.Box(new Rect(OptionsMenu.x, OptionsMenu.y, menuWidth, 150), "Custom Tracks Options");
-            CustomMapsOnly = GUI.Toggle(new Rect(OptionsMenu.x+10, OptionsMenu.y+20, 200, 30), CustomMapsOnly, "Custom Maps Only");
+            CustomMapsOnly = GUI.Toggle(new Rect(OptionsMenu.x+10, OptionsMenu.y+20, 200, 20), CustomMapsOnly, "Custom Maps Only");
+            
+            if (CustomMapsOnly) {
+                BaseGameMapsOnly = false;
+            }
+
+            BaseGameMapsOnly = GUI.Toggle(new Rect(OptionsMenu.x+10, OptionsMenu.y+40, 200, 20), BaseGameMapsOnly, "Base Game Maps Only");
+        
+            if (BaseGameMapsOnly) {
+                CustomMapsOnly = false;
+            }
         }
     }
 

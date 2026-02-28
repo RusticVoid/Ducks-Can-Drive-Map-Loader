@@ -10,13 +10,11 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 
-[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.2", "RusticVoid")]
+[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.3", "RusticVoid")]
 [assembly: MelonGame("Joseph Cook", "Ducks Can Drive")]
 
 /*
-    Version 1.0.2
-    Changes:
-        Changed Default Map to better fit updated spawns
+    Version 1.0.3
 */
 
 namespace DCDMapLoader
@@ -64,12 +62,11 @@ namespace DCDMapLoader
 
         static bool Prefix(RoundTimer __instance, ref IEnumerator __result)
         {
-            if (customTrackMenu.CustomMapsOnly == true) {
-                __result = CustomLoadRace(__instance);
-                return false; // Skip original method
-            } else {
+            if (customTrackMenu.BaseGameMapsOnly == true)
                 return true;
-            }
+            
+            __result = CustomLoadRace(__instance);
+            return false; // Skip original method
         }
 
         static IEnumerator CustomLoadRace(RoundTimer instance)
@@ -79,8 +76,43 @@ namespace DCDMapLoader
 
             yield return new WaitForSeconds(2.5f);
 
-            int chosenMap = UnityEngine.Random.Range(0, customTrackLoader.customTracks.Count);
-            customTrackLoader.LoadRace(chosenMap);
+            // Get base maps from RoundTimer
+            var tracksField = AccessTools.Field(typeof(RoundTimer), "tracks");
+            string[] baseTracks = (string[])tracksField.GetValue(instance);
+
+            List<System.Action> loadActions = new List<System.Action>();
+
+            // Add base maps if allowed
+            if (!customTrackMenu.CustomMapsOnly)
+            {
+                for (int i = 0; i < baseTracks.Length; i++)
+                {
+                    int index = i;
+                    loadActions.Add(() =>
+                    {
+                        PhotonNetwork.LoadLevel(baseTracks[index]);
+                    });
+                }
+            }
+
+            // Add custom maps if allowed
+            if (!customTrackMenu.BaseGameMapsOnly)
+            {
+                for (int i = 0; i < customTrackLoader.customTracks.Count; i++)
+                {
+                    int index = i;
+                    loadActions.Add(() =>
+                    {
+                        customTrackLoader.LoadRace(index);
+                    });
+                }
+            }
+
+            if (loadActions.Count == 0)
+                yield break;
+
+            int chosen = UnityEngine.Random.Range(0, loadActions.Count);
+            loadActions[chosen].Invoke();
         }
     }
 }
