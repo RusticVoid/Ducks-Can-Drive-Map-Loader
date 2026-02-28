@@ -10,17 +10,11 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 
-[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.1", "RusticVoid")]
+[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.2", "RusticVoid")]
 [assembly: MelonGame("Joseph Cook", "Ducks Can Drive")]
 
 /*
-    Version 1.0.1
-    Bug Fixes:
-        No more extra player in non-custom maps
-
-    Additions:
-        Added options menu
-        Added option for City to load custom tracks
+    Version 1.0.2
 */
 
 namespace DCDMapLoader

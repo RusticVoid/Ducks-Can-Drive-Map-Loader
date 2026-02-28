@@ -186,14 +186,12 @@ namespace DCDMapLoader
                     int index = PhotonNetwork.LocalPlayer.ActorNumber - 1;
                     //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
 
-                    Vector3 spawnOffsetFix = new Vector3(-13.55f, 0f, 9.5f);
-
                     if (buildIndex > 3)
                     {
-                        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position + spawnOffsetFix, spawnPositions[index].rotation, 0);
+                        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
                         return;
                     }
-                    GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position + spawnOffsetFix, spawnPositions[index].rotation, 0);
+                    GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
                     Garage[] array = UnityEngine.Object.FindObjectsOfType<Garage>();
                     for (int num = 0; num < array.Length; num++)
                     {
