@@ -31,4 +31,4 @@ The directory will look like this:
 
 # How To Make a Custom Map
 
-Coming Soon
+Waiting for permission form the creator of Ducks Can Drive to share a template project with orginal script code
