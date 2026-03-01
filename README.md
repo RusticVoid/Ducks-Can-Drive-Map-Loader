@@ -1,61 +1,137 @@
 # Ducks Can Drive Map Loader
-This is a Map Loader for the game Ducks Can Drive.
-## TODO
+
+A Map Loader mod for **Ducks Can Drive**.
+
+---
+
+## 🚧 TODO
 - [ ] Add the ability to use custom cities
 
-# How To Install
-First you will need to install [MelonLoader](https://melonwiki.xyz/#/?id=requirements) to Ducks Can Drive, It's very easy to install if you have trouble installing MelonLoader DO NOT ASK ME FOR HELP.
-Here is an install video for MelonLoader. [YouTube Video Link.](https://youtu.be/AMMvtprzh4I?si=qiHABkxAePVoAB9I)
+---
 
-Once you have installed MelonLoader, install the latest release of [Ducks Can Drive Map Loader.](https://github.com/RusticVoid/Ducks-Can-Drive-Map-Loader/releases/latest)
+# 📦 How To Install
 
-Take the DCDMapLoader.dll and put it in the "Mods" folder in the Ducks Can Drive game directory. If there is no "Mods" folder add a new folder and call it "Mods".
+## 1️⃣ Install MelonLoader
 
-The Map Loader is now installed to Ducks Can Drive.
+You must install **MelonLoader** for Ducks Can Drive.
 
-# How To Install Custom Maps
+Download it here:  
+https://melonwiki.xyz/#/?id=requirements  
 
-In the Ducks Can Drive game directory there should be a "Maps" folder after running the game once, or you can just make a new folder and call it "Maps".
+If you have trouble installing MelonLoader, try this installation video.
 
-There are some maps I made that you can download [here](https://github.com/RusticVoid/Ducks-Can-Drive-Map-Loader/tree/main/Maps).
+Installation video:  
+https://youtu.be/AMMvtprzh4I?si=qiHABkxAePVoAB9I
 
-Say for instance you choose the "Template Road" map. You will unzip the "TemplateRoad.zip" in the "Maps" folder, then you can delete the zip.
+---
 
-The directory will look like this:
-<pre>
-  Ducks Can Drive/
-  ├── Maps/
-  │   └── Template Road/
-  │       ├── icon.png
-  │       ├── info.json
-  │       └── templateroad
-</pre>
+## 2️⃣ Install Ducks Can Drive Map Loader
 
-# How To Make a Custom Map
+Download the latest release here:  
+https://github.com/RusticVoid/Ducks-Can-Drive-Map-Loader/releases/latest
 
-First install [Unity Hub.](https://docs.unity3d.com/hub/manual/InstallHub.html)
+1. Download the latest `.dll` file.
+2. Place `DCDMapLoader.dll` inside the **Mods** folder in your Ducks Can Drive game directory.
+3. If there is no `Mods` folder, create one named "Mods"
 
-Then install the [DCD_Template_Map.zip](https://github.com/RusticVoid/Ducks-Can-Drive-Map-Loader/tree/main/UnityTemplates)
+The Map Loader is now installed.
 
-Extract the zip wherever you want to. For this case where gonna extract it to a folder called "MyDCDMap"
+---
 
-Open Unity Hub and at the top left click "Add" then "Add project from disk" <br>
-<img width="259" height="169" alt="image" src="https://github.com/user-attachments/assets/ba0dd9d5-8f68-4086-b0bf-6640f3579d40" />
+# 🗺️ How To Install Custom Maps
 
-go to then open the folder where you extracted the zip (for this case wherever MyDCDMap is located)
+After running the game once, a `Maps` folder should appear in the game directory.
 
-You should get a popup like this. <br>
-<img width="991" height="614" alt="image" src="https://github.com/user-attachments/assets/a6d0dbb1-4c74-4eae-8379-62aff14a94e7" />
+If it does not exist, create a folder named "Maps".
 
-Click "Install Version 2022.3.8f1" at the bottom right of the popup.
+You can download example maps here:  
+https://github.com/RusticVoid/Ducks-Can-Drive-Map-Loader/tree/main/Maps
 
-After that you should see something like this. <br>
-<img width="974" height="632" alt="image" src="https://github.com/user-attachments/assets/335b70dc-77da-477b-b00d-73a3bfe1d202" />
+---
 
-Just click "Install" at the bottom right.
+## Example: Installing "Template Road"
 
-Allow Unity to install and then open the new project.
+1. Download `TemplateRoad.zip`
+2. Extract it into the `Maps` folder
+3. Delete the zip file after extracting
 
-You should be loaded into the Template_Road scene if not, open the scenes folder in the bottom left of the editor then double click the Template_Road scene to open it.
+Your folder structure should look like this:
 
-Congrats you are now ready to make a map.
+```
+Ducks Can Drive/
+├── Maps/
+│   └── Template Road/
+│       ├── icon.png
+│       ├── info.json
+│       └── templateroad
+```
+
+---
+
+# 🛠️ How To Make a Custom Map
+
+## Step 1 — Install Unity Hub
+
+Download Unity Hub here:  
+https://docs.unity3d.com/hub/manual/InstallHub.html
+
+---
+
+## Step 2 — Download the Template Project
+
+Download the template here:  
+https://github.com/RusticVoid/Ducks-Can-Drive-Map-Loader/tree/main/UnityTemplates
+
+Extract the zip wherever you want.
+
+For example:
+
+```
+C:\Users\YourUsername\Desktop\MyDCDMap\
+```
+
+---
+
+## Step 3 — Add the Project to Unity Hub
+
+1. Open Unity Hub
+2. Click **Add**
+3. Click **Add project from disk**
+4. Select your extracted `MyDCDMap` folder
+
+When prompted, install Unity version:
+
+```
+2022.3.8f1
+```
+
+Click **Install** and wait for Unity to finish installing.
+
+---
+
+## Step 4 — Open the Scene
+
+After opening the project:
+
+- You should automatically load into the `Template_Road` scene.
+- If not, open the **Scenes** folder (bottom-left panel in Unity).
+- Double-click `Template_Road`.
+
+---
+
+🎉 You are now ready to create your custom map.
+Here is a tutorial vidoe for after you have install and setup the Template Project:
+IN THE WORKS
+
+---
+
+## 📂 Repository Structure (For Map Creators)
+
+Each custom map folder should look like this:
+
+```
+MapName/
+├── icon.png
+├── info.json
+└── assetbundle file
+```
