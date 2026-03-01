@@ -123,7 +123,7 @@ After opening the project:
 
 ---
 
-## 📂 Repository Structure (For Map Creators)
+## 📂 Folder Structure (For Map Creators)
 
 Each custom map folder should look like this:
 
@@ -133,3 +133,14 @@ MapName/
 ├── info.json
 └── assetbundle file
 ```
+
+info.json should look like this:
+
+```
+{
+    "Name": "TRACK NAME",
+    "Desc": "TRACK DESCRIPTION",
+    "Author": "YOUR NAME"
+}
+```
+
