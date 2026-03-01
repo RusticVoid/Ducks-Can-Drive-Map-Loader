@@ -33,4 +33,29 @@ The directory will look like this:
 
 # How To Make a Custom Map
 
-Coming Soon
+First install [Unity Hub.](https://docs.unity3d.com/hub/manual/InstallHub.html)
+
+Then install the [DCD_Template_Map.zip](https://github.com/RusticVoid/Ducks-Can-Drive-Map-Loader/tree/main/UnityTemplates)
+
+Extract the zip wherever you want to. For this case where gonna extract it to a folder called "MyDCDMap"
+
+Open Unity Hub and at the top left click "Add" then "Add project from disk" <br>
+<img width="259" height="169" alt="image" src="https://github.com/user-attachments/assets/ba0dd9d5-8f68-4086-b0bf-6640f3579d40" />
+
+go to then open the folder where you extracted the zip (for this case wherever MyDCDMap is located)
+
+You should get a popup like this. <br>
+<img width="991" height="614" alt="image" src="https://github.com/user-attachments/assets/a6d0dbb1-4c74-4eae-8379-62aff14a94e7" />
+
+Click "Install Version 2022.3.8f1" at the bottom right of the popup.
+
+After that you should see something like this. <br>
+<img width="974" height="632" alt="image" src="https://github.com/user-attachments/assets/335b70dc-77da-477b-b00d-73a3bfe1d202" />
+
+Just click "Install" at the bottom right.
+
+Allow Unity to install and then open the new project.
+
+You should be loaded into the Template_Road scene if not, open the scenes folder in the bottom left of the editor then double click the Template_Road scene to open it.
+
+Congrats you are now ready to make a map.
