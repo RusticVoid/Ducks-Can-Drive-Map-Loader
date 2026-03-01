@@ -9,7 +9,7 @@ A Map Loader mod for **Ducks Can Drive**.
 
 ---
 
-# 📦 How To Install
+# 📦 How To Install [VIDEO](https://www.youtube.com/watch?v=qvViDuwhJwk)
 
 ## 1️⃣ Install MelonLoader
 
@@ -68,7 +68,7 @@ Ducks Can Drive/
 
 ---
 
-# 🛠️ How To Make a Custom Map
+# 🛠️ How To Make a Custom Map [VIDEO]([https://www.youtube.com/watch?v=qvViDuwhJwk](https://www.youtube.com/watch?v=PTQbMUplUzc&t))
 
 ## Step 1 — Install Unity Hub
 
@@ -120,8 +120,6 @@ After opening the project:
 ---
 
 🎉 You are now ready to create your custom map.
-Here is a tutorial vidoe for after you have install and setup the Template Project:
-IN THE WORKS
 
 ---
 
