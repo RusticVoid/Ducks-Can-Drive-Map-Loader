@@ -28,7 +28,7 @@ The directory will look like this:
   │   └── Template Road/
   │       ├── icon.png
   │       ├── info.json
-  │       └── walls
+  │       └── templateroad
 </pre>
 
 # How To Make a Custom Map
