@@ -68,7 +68,7 @@ Ducks Can Drive/
 
 ---
 
-# 🛠️ How To Make a Custom Map [VIDEO](https://www.youtube.com/watch?v=PTQbMUplUzc&t)
+# 🛠️ How To Make a Custom Map [VIDEO](https://www.youtube.com/watch?v=PTQbMUplUzc)
 
 ## Step 1 — Install Unity Hub
 
