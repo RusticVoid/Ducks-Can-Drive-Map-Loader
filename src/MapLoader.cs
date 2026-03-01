@@ -15,6 +15,8 @@ using UnityEngine.SceneManagement;
 
 /*
     Version 1.0.4
+    Changes:
+    - Changed map obeject name from ToLastCheckPoint to ToLastCheckpoint
 */
 
 namespace DCDMapLoader

@@ -153,7 +153,7 @@ namespace DCDMapLoader
                         {
                             positions.Add(obj.transform);
                         }
-                        if (obj.name == "ToLastCheckPoint" || obj.name == "toLastCheckPoint")
+                        if (obj.name == "ToLastCheckpoint" || obj.name == "toLastCheckpoint")
                         {
                             Collider col = obj.GetComponent<Collider>();
                             if (col != null)
