@@ -31,7 +31,7 @@ namespace DCDMapLoader
             int contentHeight = customTrackLoader.customTracks.Count * ButtonHeight + 10;
 
             scrollPosition = GUI.BeginScrollView(
-                new Rect(MenuPos.x, MenuPos.y + 25, menuWidth, menuHeight - 25),
+                new Rect(MenuPos.x, MenuPos.y + 25, menuWidth, menuHeight - 55),
                 scrollPosition,
                 new Rect(0, 0, menuWidth - 20, contentHeight)
             );
@@ -39,7 +39,7 @@ namespace DCDMapLoader
             for (int i = 0; i < customTrackLoader.customTracks.Count; i++) {
                 var track = customTrackLoader.customTracks[i];
 
-                Rect buttonRect = new Rect(10, 10 + (ButtonHeight * i), menuWidth - 20, ButtonHeight);
+                Rect buttonRect = new Rect(10, (ButtonHeight * i), menuWidth - 20, ButtonHeight);
 
                 if (GUI.Button(buttonRect, ""))
                 {
@@ -55,9 +55,16 @@ namespace DCDMapLoader
             
             GUI.EndScrollView();
 
+            Rect refeshMapsRect = new Rect(MenuPos.x+10, menuHeight - 10, 100, 20);
+
+            if (GUI.Button(refeshMapsRect, "Refesh Maps"))
+            {
+                customTrackLoader.InitCustomMaps();
+            }
+
             Vector2 OptionsMenu = new Vector2(MenuPos.x, menuHeight+20);
 
-            GUI.Box(new Rect(OptionsMenu.x, OptionsMenu.y, menuWidth, 150), "Custom Tracks Options");
+            GUI.Box(new Rect(OptionsMenu.x, OptionsMenu.y, menuWidth, 70), "Custom Tracks Options");
             CustomMapsOnly = GUI.Toggle(new Rect(OptionsMenu.x+10, OptionsMenu.y+20, 200, 20), CustomMapsOnly, "Custom Maps Only");
             
             if (CustomMapsOnly) {

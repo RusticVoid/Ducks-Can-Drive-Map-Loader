@@ -10,13 +10,15 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 
-[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.6", "RusticVoid")]
+[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.7", "RusticVoid")]
 [assembly: MelonGame("Joseph Cook", "Ducks Can Drive")]
 
 /*
-    Version 1.0.6
-    Fixes:
-    - Can no longer move before countdown in base game map after custom city map
+    Version 1.0.7
+    Additions:
+    - Added a refesh maps button in the custom tracks menu
+    Changes:
+    - Changed size of track options menu to be a little smaller
 */
 
 namespace DCDMapLoader
@@ -53,12 +55,6 @@ namespace DCDMapLoader
             if (SceneManager.GetActiveScene().name == "Lobby" && PhotonNetwork.InRoom && PhotonNetwork.IsMasterClient)
             {
                 MelonEvents.OnGUI.Subscribe(customTrackMenu.menu, 100);
-            }
-
-            if (Input.GetKeyDown(KeyCode.F5))
-            {
-                MelonLogger.Msg("Loading Maps!");
-                customTrackLoader.InitCustomMaps();
             }
         }
     }

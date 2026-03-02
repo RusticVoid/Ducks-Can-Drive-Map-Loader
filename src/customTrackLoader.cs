@@ -123,6 +123,7 @@ namespace DCDMapLoader
                 if (bundle == null)
                 {
                     MelonLogger.Msg("Failed to load AssetBundle!");
+                    MelonLogger.Msg("Is map already loaded?");
                     continue;
                 }
 
