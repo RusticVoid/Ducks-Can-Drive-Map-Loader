@@ -5,7 +5,7 @@ A Map Loader mod for **Ducks Can Drive**.
 ---
 
 ## 🚧 TODO
-- [ ] Add the ability to use custom cities
+- [ ] database to install maps from in game
 
 ---
 
@@ -141,6 +141,7 @@ info.json should look like this:
     "Name": "TRACK NAME",
     "Desc": "TRACK DESCRIPTION",
     "Author": "YOUR NAME"
+    "isCity": true/false, OPTIONAL
 }
 ```
 
