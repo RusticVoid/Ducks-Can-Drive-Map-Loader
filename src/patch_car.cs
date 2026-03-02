@@ -22,6 +22,8 @@ namespace DCDMapLoader
         {
             if (!customTrackLoader.customTracks[customTrackLoader.currentTrackId].isCity)
                 return true;
+            if (SceneManager.GetActiveScene().name != System.IO.Path.GetFileNameWithoutExtension(customTrackLoader.customTracks[customTrackLoader.currentTrackId].mapPath))
+                return true;
             
             CustomStart(__instance);
             return false; // Skip original method
@@ -126,6 +128,8 @@ namespace DCDMapLoader
         {
             if (!customTrackLoader.customTracks[customTrackLoader.currentTrackId].isCity)
                 return true;
+            if (SceneManager.GetActiveScene().name != System.IO.Path.GetFileNameWithoutExtension(customTrackLoader.customTracks[customTrackLoader.currentTrackId].mapPath))
+                return true;
             
             CustomFixedUpdate(__instance);
             return false; // Skip original method
@@ -218,6 +222,8 @@ namespace DCDMapLoader
         static bool Prefix(Compass __instance)
         {
             if (!customTrackLoader.customTracks[customTrackLoader.currentTrackId].isCity)
+                return true;
+            if (SceneManager.GetActiveScene().name != System.IO.Path.GetFileNameWithoutExtension(customTrackLoader.customTracks[customTrackLoader.currentTrackId].mapPath))
                 return true;
             
             CustomUpdate(__instance);

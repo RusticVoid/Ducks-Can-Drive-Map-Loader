@@ -15,6 +15,8 @@ using UnityEngine.SceneManagement;
 
 /*
     Version 1.0.6
+    Fixes:
+    - Can no longer move before countdown in base game map after custom city map
 */
 
 namespace DCDMapLoader
@@ -53,11 +55,11 @@ namespace DCDMapLoader
                 MelonEvents.OnGUI.Subscribe(customTrackMenu.menu, 100);
             }
 
-            //if (Input.GetKeyDown(KeyCode.F5))
-            //{
-            //    MelonLogger.Msg("Loading Maps!");
-            //    customTrackLoader.InitCustomMaps();
-            //}
+            if (Input.GetKeyDown(KeyCode.F5))
+            {
+                MelonLogger.Msg("Loading Maps!");
+                customTrackLoader.InitCustomMaps();
+            }
         }
     }
 
