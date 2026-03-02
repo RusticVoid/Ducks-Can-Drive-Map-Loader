@@ -55,6 +55,12 @@ namespace DCDMapLoader
             {
                 MelonEvents.OnGUI.Subscribe(customTrackMenu.menu, 100);
             }
+
+            //if (Input.GetKeyDown(KeyCode.F5))
+            //{
+            //    MelonLogger.Msg("Loading Maps!");
+            //    customTrackLoader.InitCustomMaps();
+            //}
         }
     }
 
