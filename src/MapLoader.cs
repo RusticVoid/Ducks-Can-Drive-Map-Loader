@@ -10,14 +10,14 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 
-[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.4", "RusticVoid")]
+[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.5", "RusticVoid")]
 [assembly: MelonGame("Joseph Cook", "Ducks Can Drive")]
 
 /*
-    Version 1.0.4
-    Changes:
-    - Changed map obeject name from ToLastCheckPoint to ToLastCheckpoint
-    - Fix map unity template
+    Version 1.0.5
+    Additions:
+    - When host leaves game the new host will get the map loader menu
+    - City maps now work
 */
 
 namespace DCDMapLoader
@@ -26,7 +26,7 @@ namespace DCDMapLoader
     {
         public override void OnInitializeMelon()
         {
-            MelonLogger.Msg("Expanded loaded!");
+            MelonLogger.Msg("DCDMapLoader loaded!");
 
             string mapsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Maps");
             if (!Directory.Exists(mapsPath))
@@ -51,9 +51,9 @@ namespace DCDMapLoader
         }
 
         public override void OnUpdate() {
-            if (Input.GetKeyDown(KeyCode.F5))
+            if (SceneManager.GetActiveScene().name == "Lobby" && PhotonNetwork.InRoom && PhotonNetwork.IsMasterClient)
             {
-                customTrackLoader.LoadRace(0); // 0 is the MapID (its position in the customTrackLoader.customTracks array)
+                MelonEvents.OnGUI.Subscribe(customTrackMenu.menu, 100);
             }
         }
     }
@@ -104,6 +104,9 @@ namespace DCDMapLoader
                 for (int i = 0; i < customTrackLoader.customTracks.Count; i++)
                 {
                     int index = i;
+                    if (customTrackLoader.customTracks[i].isCity) {
+                        continue;
+                    }
                     loadActions.Add(() =>
                     {
                         customTrackLoader.LoadRace(index);

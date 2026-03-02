@@ -10,6 +10,7 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using ArcadeVP;
 
 namespace DCDMapLoader
 {
@@ -19,6 +20,7 @@ namespace DCDMapLoader
         public string Name;
         public string Desc;
         public string Author;
+        public bool isCity;
     }
 
     public class customTrack
@@ -27,23 +29,35 @@ namespace DCDMapLoader
         public Texture2D icon;
         public string mapPath;
         public string desc;
+        public bool isCity;
 
-        public customTrack(string name, string mapPath, string desc, Texture2D icon = null)
+        public customTrack(string name, string mapPath, string desc, Texture2D icon = null, bool isCity = false)
         {
             this.name = name;
             this.mapPath = mapPath;
             this.icon = icon;
             this.desc = desc;
+            this.isCity = isCity;
         }
     }
 
     public class customTrackLoader
     {
+        public static int currentTrackId;
+
         public static List<customTrack> customTracks = new List<customTrack>();
 
         public static void LoadRace(int MapID) {
             if (PhotonNetwork.InRoom) {
                 MelonLogger.Msg("Loading " + customTracks[MapID].name + "!");
+
+                //PhotonNetwork.CurrentRoom.IsOpen = false;
+                //PhotonNetwork.CurrentRoom.IsVisible = false;
+                //PhotonView pv = Launcher.Instance.GetComponent<PhotonView>();
+                //pv.RPC("SetRounds", RpcTarget.All, RoomManager.Instance.roundAmount);
+                //pv.RPC("SetMaxRoundTimer", RpcTarget.All, RoomManager.Instance.maxRoundTimer);
+
+                currentTrackId = MapID;
                 PhotonNetwork.LoadLevel(System.IO.Path.GetFileNameWithoutExtension(customTracks[MapID].mapPath));
             }
         }
@@ -123,7 +137,7 @@ namespace DCDMapLoader
                         
                         customTrack track = new customTrack(System.IO.Path.GetFileNameWithoutExtension(trackPath), trackPath, "No Desc", icon);
                         if (info != null) {
-                            track = new customTrack(info.Name+" By: "+info.Author, trackPath, info.Desc, icon);
+                            track = new customTrack(info.Name+" By: "+info.Author, trackPath, info.Desc, icon, info.isCity);
                         }
                         customTracks.Add(track);
                     }
@@ -184,7 +198,7 @@ namespace DCDMapLoader
 
                     MelonLogger.Msg("Initializing Player!");
                     int index = PhotonNetwork.LocalPlayer.ActorNumber - 1;
-                    //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
+                    //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity, 0);
 
                     if (buildIndex > 3)
                     {
@@ -192,6 +206,7 @@ namespace DCDMapLoader
                         return;
                     }
                     GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPositions[index].position, spawnPositions[index].rotation, 0);
+                    
                     Garage[] array = UnityEngine.Object.FindObjectsOfType<Garage>();
                     for (int num = 0; num < array.Length; num++)
                     {
