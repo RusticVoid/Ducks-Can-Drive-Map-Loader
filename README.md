@@ -68,7 +68,7 @@ Ducks Can Drive/
 
 ---
 
-# 🛠️ How To Make a Custom Map [VIDEO](https://www.youtube.com/watch?v=PTQbMUplUzc)
+# 🛠️ How To Make a Custom Map
 
 ## Step 1 — Install Unity Hub
 
@@ -120,6 +120,8 @@ After opening the project:
 ---
 
 🎉 You are now ready to create your custom map.
+Follow this [VIDEO](https://www.youtube.com/watch?v=PTQbMUplUzc) after this setup process for custom tracks.
+CUSTOM CITY VIDEO COMING SOON.
 
 ---
 
