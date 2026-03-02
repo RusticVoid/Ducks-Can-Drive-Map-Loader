@@ -7,6 +7,8 @@ A Map Loader mod for **Ducks Can Drive**.
 ## 🚧 TODO
 - [ ] Database to install maps from in game
 - [ ] Be able to load random citys when starting a game
+- [ ] Add a refesh maps button to the custom tracks menu
+- [ ] Update custom map tutorial video
 
 ---
 
