@@ -5,7 +5,8 @@ A Map Loader mod for **Ducks Can Drive**.
 ---
 
 ## 🚧 TODO
-- [ ] database to install maps from in game
+- [ ] Database to install maps from in game
+- [ ] Be able to load random citys when starting a game
 
 ---
 
