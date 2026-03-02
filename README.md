@@ -120,7 +120,7 @@ After opening the project:
 ---
 
 🎉 You are now ready to create your custom map.
-Follow this [VIDEO](https://www.youtube.com/watch?v=PTQbMUplUzc) after this setup process for custom tracks.
+Follow this [VIDEO](https://www.youtube.com/watch?v=PTQbMUplUzc) after this setup process for custom tracks. <br>
 CUSTOM CITY VIDEO COMING SOON.
 
 ---
