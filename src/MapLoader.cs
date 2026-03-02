@@ -10,14 +10,11 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 
-[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.5", "RusticVoid")]
+[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.6", "RusticVoid")]
 [assembly: MelonGame("Joseph Cook", "Ducks Can Drive")]
 
 /*
-    Version 1.0.5
-    Additions:
-    - When host leaves game the new host will get the map loader menu
-    - City maps now work
+    Version 1.0.6
 */
 
 namespace DCDMapLoader
