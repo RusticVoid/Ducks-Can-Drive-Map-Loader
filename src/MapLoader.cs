@@ -10,15 +10,11 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 
-[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.7", "RusticVoid")]
+[assembly: MelonInfo(typeof(DCDMapLoader.MapLoader), "DCDMapLoader", "1.0.8", "RusticVoid")]
 [assembly: MelonGame("Joseph Cook", "Ducks Can Drive")]
 
 /*
-    Version 1.0.7
-    Additions:
-    - Added a refesh maps button in the custom tracks menu
-    Changes:
-    - Changed size of track options menu to be a little smaller
+    Version 1.0.8
 */
 
 namespace DCDMapLoader
