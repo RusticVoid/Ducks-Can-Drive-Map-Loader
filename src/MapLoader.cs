@@ -16,7 +16,7 @@ using UnityEngine.SceneManagement;
 /*
     Version 1.0.8
     Changes:
-    - Removed from custom track menu from rank.
+    - Removed the custom track menu from rank.
 */
 
 namespace DCDMapLoader
