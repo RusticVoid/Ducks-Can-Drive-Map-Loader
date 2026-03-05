@@ -15,6 +15,8 @@ using UnityEngine.SceneManagement;
 
 /*
     Version 1.0.8
+    Changes:
+    - Removed from custom track menu from rank.
 */
 
 namespace DCDMapLoader
@@ -48,13 +50,17 @@ namespace DCDMapLoader
         }
 
         public override void OnUpdate() {
-            if (SceneManager.GetActiveScene().name == "Lobby" && PhotonNetwork.InRoom && PhotonNetwork.IsMasterClient)
+            if (SceneManager.GetActiveScene().name == "Lobby"
+             && PhotonNetwork.InRoom
+             && PhotonNetwork.IsMasterClient
+             && PhotonNetwork.CurrentRoom.IsVisible == false)
             {
                 MelonEvents.OnGUI.Subscribe(customTrackMenu.menu, 100);
+            } else {
+                    MelonEvents.OnGUI.Unsubscribe(customTrackMenu.menu);
             }
         }
     }
-
 
     [HarmonyPatch(typeof(RoundTimer), "LoadRace")]
     public class Patch_LoadRace
