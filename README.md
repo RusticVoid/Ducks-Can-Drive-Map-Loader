@@ -136,7 +136,7 @@ Each custom map folder should look like this:
 MapName/
 ├── icon.png
 ├── info.json
-└── assetbundle file
+└── exported map file
 ```
 
 info.json should look like this:
