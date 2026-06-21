@@ -14,7 +14,9 @@ using UnityEngine.SceneManagement;
 [assembly: MelonGame("Joseph Cook", "Ducks Can Drive")]
 
 /*
-    Version 1.1.0
+    Version 1.1.1
+
+    Added way for thunderstore maps to work
 */
 
 namespace DCDMapLoader

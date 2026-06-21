@@ -11,6 +11,7 @@ using Photon.Realtime;
 using System.Linq;
 using UnityEngine.SceneManagement;
 using ArcadeVP;
+using System.Reflection;
 
 namespace DCDMapLoader
 {
@@ -98,6 +99,66 @@ namespace DCDMapLoader
         }
 
         public static void InitCustomMaps() {
+            string dllPath = Assembly.GetExecutingAssembly().Location;
+            string dllFolder = Path.GetDirectoryName(dllPath);
+            string modsPath = Directory.GetParent(dllFolder).FullName;
+
+            string[] modsFolders = Directory.GetDirectories(modsPath, "*", SearchOption.TopDirectoryOnly);
+            
+            foreach (string modPath in modsFolders) {
+                string mapsModPath = modPath + "/Maps/";
+
+                if (!Directory.Exists(mapsModPath))
+                {
+                    continue;
+                }
+
+                string[] mapModFolders = Directory.GetDirectories(mapsModPath, "*", SearchOption.TopDirectoryOnly);
+
+                foreach (string mapPath in mapModFolders) {
+                    string[] files = Directory.GetFiles(mapPath, "*", SearchOption.TopDirectoryOnly);
+                    
+                    Texture2D icon = new Texture2D(2, 2);
+                    AssetBundle bundle = null;
+                    InfoData info = null;
+                    
+                    foreach (string file in files) {
+                        bool isBundle = Path.GetExtension(file) == "";
+                        if (isBundle) {
+                            bundle = AssetBundle.LoadFromFile(file);
+                        } else if (Path.GetExtension(file) == ".json") {
+                            info = JsonUtility.FromJson<InfoData>(File.ReadAllText(file));
+                        } else {
+                            UnityEngine.ImageConversion.LoadImage(icon, File.ReadAllBytes(file));
+                        }
+                    }
+
+                    if (bundle == null)
+                    {
+                        MelonLogger.Msg("Failed to load AssetBundle!");
+                        MelonLogger.Msg("Is map already loaded?");
+                        continue;
+                    }
+
+                    if (bundle.GetAllScenePaths().Length == 0)
+                    {
+                        MelonLogger.Msg("No scenes found in AssetBundle!");
+                        continue;
+                    } else {
+                        string[] scenes = bundle.GetAllScenePaths();
+                        foreach (string trackPath in scenes)
+                        {
+                            
+                            customTrack track = new customTrack(System.IO.Path.GetFileNameWithoutExtension(trackPath), trackPath, "No Desc", icon);
+                            if (info != null) {
+                                track = new customTrack(info.Name+" By: "+info.Author, trackPath, info.Desc, icon, info.isCity);
+                            }
+                            customTracks.Add(track);
+                        }
+                    }
+                }
+            }
+
             string mapsPath = AppDomain.CurrentDomain.BaseDirectory + "/Maps/";
 
             string[] mapFolders = Directory.GetDirectories(mapsPath, "*", SearchOption.TopDirectoryOnly);
